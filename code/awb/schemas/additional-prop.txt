@@ -1,0 +1,1322 @@
+{
+  "type": "object",
+  "required": [
+    "awb_number",
+    "shipper_info",
+    "consignee_info",
+    "carrier_info",
+    "routing_info",
+    "shipment_details",
+    "special_handling",
+    "customs_info",
+    "charges",
+    "signatures"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "awb_number": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "UNIQUE 11-DIGIT AWB NUMBER (3-digit prefix + 8-digit serial) from old schema’s 'AirWayBillPrefix' + 'AirWayBillNo'.",
+      "additionalProperties": false,
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "AirWayBillPrefix": {
+          "type": "integer",
+          "description": "AirWayBill prefix",
+          "minimum": 0,
+          "maximum": 999
+        },
+        "AirWayBillNo": {
+          "type": "integer",
+          "description": "AirWayBill number",
+          "minimum": 0,
+          "maximum": 99999999
+        }
+      }
+    },
+    "shipper_info": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "address",
+        "account_number",
+        "contact_number"
+      ],
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Old schema => Shipper.ShipperName (minLength=1, maxLength=70).",
+          "additionalProperties": false
+        },
+        "address": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Represents old Shipper address lines, block, area, city, country code, etc.",
+          "additionalProperties": false
+        },
+        "account_number": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Old => Shipper.AccountNumber (minLength=0, maxLength=14).",
+          "additionalProperties": false
+        },
+        "contact_number": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Combines old Shipper phone/fax. TelPhone, Fax => numeric w/ large max. Stored here as a single string or combined field.",
+          "additionalProperties": false
+        }
+      },
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "Shipper": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Shipper details from old schema",
+          "properties": {
+            "ShipperName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 70,
+              "additionalProperties": false
+            },
+            "AccountNumber": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 14,
+              "additionalProperties": false
+            },
+            "AddressLine1": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "additionalProperties": false
+            },
+            "AddressLine2": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "additionalProperties": false
+            },
+            "Block": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "additionalProperties": false
+            },
+            "Area": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "additionalProperties": false
+            },
+            "CityCode": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3,
+              "additionalProperties": false
+            },
+            "OtherCityName": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 50,
+              "additionalProperties": false
+            },
+            "CountryCode": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2,
+              "additionalProperties": false
+            },
+            "PinCode": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 9,
+              "additionalProperties": false
+            },
+            "TelPhone": {
+              "type": "number",
+              "additionalProperties": false
+            },
+            "Fax": {
+              "type": "number",
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "ShipperName",
+            "AddressLine1",
+            "CityCode",
+            "CountryCode",
+            "PinCode"
+          ]
+        }
+      }
+    },
+    "consignee_info": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "address",
+        "account_number",
+        "contact_number"
+      ],
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Old => Consignee.ConsigneeName (minLength=1, maxLength=70).",
+          "additionalProperties": false
+        },
+        "address": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Combines old Consignee address lines, block, area, city, country code, etc.",
+          "additionalProperties": false
+        },
+        "account_number": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Old => Consignee.AccountNumber (minLength=1, maxLength=14).",
+          "additionalProperties": false
+        },
+        "contact_number": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Combines old Consignee phone/fax. TelPhone, Fax => numeric w/ large max. Stored as a single string or combined field.",
+          "additionalProperties": false
+        }
+      },
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "Consignee": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Consignee details from old schema",
+          "properties": {
+            "ConsigneeName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 70,
+              "additionalProperties": false
+            },
+            "AccountNumber": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 14,
+              "additionalProperties": false
+            },
+            "AddressLine1": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "additionalProperties": false
+            },
+            "AddressLine2": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "additionalProperties": false
+            },
+            "Block": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "additionalProperties": false
+            },
+            "Area": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "additionalProperties": false
+            },
+            "CityCode": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3,
+              "additionalProperties": false
+            },
+            "OtherCityName": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 50,
+              "additionalProperties": false
+            },
+            "CountryCode": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2,
+              "additionalProperties": false
+            },
+            "PinCode": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 9,
+              "additionalProperties": false
+            },
+            "TelPhone": {
+              "type": "number",
+              "additionalProperties": false
+            },
+            "Fax": {
+              "type": "number",
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "ConsigneeName",
+            "AddressLine1",
+            "CityCode",
+            "CountryCode",
+            "PinCode"
+          ]
+        }
+      }
+    },
+    "carrier_info": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "issuing_airline",
+        "flight_number",
+        "departure_date",
+        "arrival_date",
+        "issuing_agent"
+      ],
+      "properties": {
+        "issuing_airline": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Could map from old Agent.AgentName or known airline code.",
+          "additionalProperties": false
+        },
+        "flight_number": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "From old Route.RoutingDetails[].FlightNumber or similar.",
+          "additionalProperties": false
+        },
+        "departure_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Potentially from old 'ExecutedonDate' or first flight departure date.",
+          "additionalProperties": false
+        },
+        "arrival_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Could be found in old routing or not explicitly in old schema.",
+          "additionalProperties": false
+        },
+        "issuing_agent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "place",
+            "date"
+          ],
+          "properties": {
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Old => Agent.AgentName",
+              "additionalProperties": false
+            },
+            "place": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Old => Agent.Place or CarriersExecution.AirportOrPlace",
+              "additionalProperties": false
+            },
+            "date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Old => CarriersExecution.CarriersExecutionDate or 'ExecutedonDate'",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "Agent": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "AgentName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "additionalProperties": false
+            },
+            "AccountNumber": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 14,
+              "additionalProperties": false
+            },
+            "IATAAgentCode": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999,
+              "additionalProperties": false
+            },
+            "CASSAddressCode": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4,
+              "additionalProperties": false
+            },
+            "ParticipantID": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4,
+              "additionalProperties": false
+            },
+            "Place": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 17,
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "AgentName",
+            "IATAAgentCode",
+            "Place"
+          ]
+        },
+        "CarriersExecution": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "CarriersExecutionDate": {
+              "type": "string",
+              "format": "date-time",
+              "additionalProperties": false
+            },
+            "AirportOrPlace": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 17,
+              "additionalProperties": false
+            },
+            "Authorisation": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "Signature": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 20,
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "required": [
+            "CarriersExecutionDate",
+            "AirportOrPlace"
+          ]
+        }
+      }
+    },
+    "routing_info": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin_airport",
+        "destination_airport",
+        "carrier_code",
+        "transfer_points"
+      ],
+      "properties": {
+        "origin_airport": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Old => Route.OriginAirportCode (minLength=3, maxLength=3).",
+          "additionalProperties": false
+        },
+        "destination_airport": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Old => Route.DestinationAirportCode (3..3).",
+          "additionalProperties": false
+        },
+        "carrier_code": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Example from old route’s RoutingDetails[].CarrierCode.",
+          "additionalProperties": false
+        },
+        "transfer_points": {
+          "type": "array",
+          "description": "Represents old schema’s Route.RoutingDetails if multiple flight segments exist.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "airport_code",
+              "carrier_code"
+            ],
+            "properties": {
+              "airport_code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "From old SourceAirportCode or DestinationAirportCode in RoutingDetails.",
+                "additionalProperties": false
+              },
+              "carrier_code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Old => RoutingDetails[].CarrierCode.",
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "Route": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "OriginAirportCode": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3,
+              "additionalProperties": false
+            },
+            "DestinationAirportCode": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3,
+              "additionalProperties": false
+            },
+            "RoutingDetails": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "CarrierCode": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 2,
+                    "additionalProperties": false
+                  },
+                  "FlightNumber": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 5,
+                    "additionalProperties": false
+                  },
+                  "FlightDepartureDate": {
+                    "type": "string",
+                    "format": "date",
+                    "additionalProperties": false
+                  },
+                  "SourceAirportCode": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "additionalProperties": false
+                  },
+                  "DestinationAirportCode": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "CarrierCode",
+                  "FlightNumber",
+                  "FlightDepartureDate",
+                  "SourceAirportCode",
+                  "DestinationAirportCode"
+                ]
+              }
+            }
+          },
+          "required": [
+            "OriginAirportCode",
+            "DestinationAirportCode"
+          ]
+        }
+      }
+    },
+    "shipment_details": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nature_of_goods",
+        "total_weight_kg",
+        "total_volume_cbm",
+        "number_of_pieces",
+        "package_type"
+      ],
+      "properties": {
+        "nature_of_goods": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Old => part of CargoDetailsList[].GoodsDescription or combined from multiple items.",
+          "additionalProperties": false
+        },
+        "total_weight_kg": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Aggregate from old CargoDetailsList[].TotalGrossWeight or sum over items.",
+          "additionalProperties": false
+        },
+        "total_volume_cbm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Aggregate from old CargoDetailsList[].TotalCargoVolume or sum of VolumetricWeight if needed.",
+          "additionalProperties": false
+        },
+        "number_of_pieces": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Sum of old CargoDetailsList[].TotalNumberOfPieces.",
+          "additionalProperties": false
+        },
+        "package_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Could reflect old RateClassCode or general cargo packaging notes.",
+          "additionalProperties": false
+        }
+      },
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "CargoDetails": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "CargoDetailsList": {
+              "type": "array",
+              "maxItems": 12,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "PackageDetails": {
+                    "type": "array",
+                    "description": "Package details, unbounded in old schema, each item has Dimension etc.",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "Dimension": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "Length": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 999999999,
+                              "additionalProperties": false
+                            },
+                            "Width": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 999999999,
+                              "additionalProperties": false
+                            },
+                            "Height": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 999999999,
+                              "additionalProperties": false
+                            },
+                            "Unit": {
+                              "type": "string",
+                              "minLength": 2,
+                              "maxLength": 3,
+                              "additionalProperties": false
+                            },
+                            "SLAC": {
+                              "type": "integer",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "Length",
+                            "Width",
+                            "Height",
+                            "Unit"
+                          ]
+                        },
+                        "NumberOfPieces": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 9999999999,
+                          "additionalProperties": false
+                        },
+                        "GrossWeight": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 9999999999,
+                          "additionalProperties": false
+                        },
+                        "GrossWeightUnit": {
+                          "type": "string",
+                          "minLength": 0,
+                          "maxLength": 3,
+                          "additionalProperties": false
+                        },
+                        "ChargeableWeight": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 9999999999,
+                          "additionalProperties": false
+                        },
+                        "ChargeableWeightUnit": {
+                          "type": "string",
+                          "minLength": 0,
+                          "maxLength": 3,
+                          "additionalProperties": false
+                        },
+                        "VolumetricWeight": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 9999999999,
+                          "additionalProperties": false
+                        },
+                        "VolumetricWeightUnit": {
+                          "type": "string",
+                          "minLength": 0,
+                          "maxLength": 3,
+                          "additionalProperties": false
+                        },
+                        "PackageVolume": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 9999999999,
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "Dimension",
+                        "NumberOfPieces",
+                        "GrossWeight",
+                        "GrossWeightUnit",
+                        "ChargeableWeight",
+                        "ChargeableWeightUnit",
+                        "VolumetricWeight",
+                        "VolumetricWeightUnit",
+                        "PackageVolume"
+                      ]
+                    }
+                  },
+                  "TotalNumberOfPieces": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 9999999999,
+                    "additionalProperties": false
+                  },
+                  "TotalGrossWeight": {
+                    "type": "number",
+                    "minimum": 0,
+                    "additionalProperties": false
+                  },
+                  "TotalGrossWeightUnit": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 3,
+                    "additionalProperties": false
+                  },
+                  "TotalChargeableWeight": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 9999999999,
+                    "additionalProperties": false
+                  },
+                  "TotalChargeableWeightUnit": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 3,
+                    "additionalProperties": false
+                  },
+                  "TotalVolumetricWeight": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 9999999999,
+                    "additionalProperties": false
+                  },
+                  "TotalVolumetricWeightUnit": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 3,
+                    "additionalProperties": false
+                  },
+                  "TotalCargoVolume": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 9999999999,
+                    "additionalProperties": false
+                  },
+                  "CommodityItemNumber": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 9999,
+                    "additionalProperties": false
+                  },
+                  "RateClassCode": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1,
+                    "additionalProperties": false
+                  },
+                  "RateCharge": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 9999999999,
+                    "additionalProperties": false
+                  },
+                  "GoodsDescription": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 100,
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "PackageDetails",
+                  "TotalNumberOfPieces",
+                  "TotalGrossWeight",
+                  "TotalGrossWeightUnit",
+                  "TotalChargeableWeight",
+                  "TotalVolumetricWeight",
+                  "TotalVolumetricWeightUnit",
+                  "TotalCargoVolume",
+                  "CommodityItemNumber",
+                  "RateClassCode",
+                  "RateCharge",
+                  "GoodsDescription"
+                ]
+              }
+            }
+          },
+          "required": [
+            "CargoDetailsList"
+          ]
+        }
+      }
+    },
+    "special_handling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "handling_codes"
+      ],
+      "properties": {
+        "handling_codes": {
+          "type": "array",
+          "description": "From old ShipmentReferenceInfo.HandlingInfo.SpecialHandlingCodes.SpecialHandlingCode, up to 9 codes allowed.",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "ShipmentReferenceInfo": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "HandlingInfo": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "SpecialHandlingCodes": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "SpecialHandlingCode": {
+                      "type": "array",
+                      "maxItems": 9,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 100,
+                        "additionalProperties": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "customs_info": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "export_declaration_number",
+        "import_license_number",
+        "duty_payment_method",
+        "required_certificates"
+      ],
+      "properties": {
+        "export_declaration_number": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Not explicitly specified in old schema; user may store in or use 'Other_Customs_Information' fields.",
+          "additionalProperties": false
+        },
+        "import_license_number": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Likewise possibly stored in 'Other_Customs_Information.Info_Group' or not used previously.",
+          "additionalProperties": false
+        },
+        "duty_payment_method": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "PREPAID",
+            "COLLECT"
+          ],
+          "description": "Old => Possibly from 'ChargeCode' or 'ChargesDetails'.",
+          "additionalProperties": false
+        },
+        "required_certificates": {
+          "type": "array",
+          "description": "Could store old 'Other_Customs_Information.Info_Group[i].Information_Identifier' or 'Supplementary_Custom_Information'.",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "Other_Customs_Information": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Info_Group": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "ISO_Country_Code": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 2,
+                    "additionalProperties": false
+                  },
+                  "Information_Identifier": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 3,
+                    "additionalProperties": false
+                  },
+                  "Custom_Information_Identifier": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 2,
+                    "additionalProperties": false
+                  },
+                  "Supplementary_Custom_Information": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 35,
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "charges": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "charge_type",
+        "currency"
+      ],
+      "properties": {
+        "charge_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Old => Possibly 'ChargeCode' or derived from 'ChargesDetails' (PREPAID/COLLECT).",
+          "additionalProperties": false
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Old => AWBCurrencyCode or DestinationCharges.DestinationCurrencyCode",
+          "additionalProperties": false
+        }
+      },
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "ChargeCode": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2,
+          "additionalProperties": false
+        },
+        "AWBCurrencyCode": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3,
+          "additionalProperties": false
+        },
+        "ChargesDetails": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "CollectChargeDueAgentAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "CollectChargeDueCarrierAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "CollectChargeSummaryTotal": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "CollectTaxesChargeAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "CollectValuationChargeAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "CollectWeightChargeAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "OtherCollectCharges": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "OtherPrepaidCharges": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "PrepaidChargeDueAgentAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "PrepaidChargeDueCarrierAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "PrepaidChargeSummaryTotal": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "PrepaidTaxesChargeAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "PrepaidValuationChargeAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "PrepaidWeightChargeAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "CollectChargeDueAgentAmount",
+            "CollectChargeDueCarrierAmount",
+            "CollectChargeSummaryTotal",
+            "CollectTaxesChargeAmount",
+            "CollectValuationChargeAmount",
+            "CollectWeightChargeAmount",
+            "PrepaidChargeDueAgentAmount",
+            "PrepaidChargeDueCarrierAmount",
+            "PrepaidChargeSummaryTotal",
+            "PrepaidTaxesChargeAmount",
+            "PrepaidValuationChargeAmount",
+            "PrepaidWeightChargeAmount"
+          ]
+        },
+        "DestinationCharges": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "DestinationCurrencyCode": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3,
+              "additionalProperties": false
+            },
+            "ExchangeRate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "ChargesAtDestination": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "ChargeAmount": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            },
+            "TotalCollectCharges": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 9999999999,
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    "signatures": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shipper_signature",
+        "carrier_signature",
+        "consignee_acknowledgement"
+      ],
+      "properties": {
+        "shipper_signature": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "date",
+            "authorized_person"
+          ],
+          "properties": {
+            "date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Matches old ShipperSignature or relevant date/time from 'Header.RefernceDate' if needed.",
+              "additionalProperties": false
+            },
+            "authorized_person": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "From old ShipperSignature => ShipperSignature.ShipperSignature",
+              "additionalProperties": false
+            }
+          }
+        },
+        "carrier_signature": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "date",
+            "authorized_person"
+          ],
+          "properties": {
+            "date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "From old CarriersExecution.CarriersExecutionDate",
+              "additionalProperties": false
+            },
+            "authorized_person": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "From old CarriersExecution.Authorisation.Signature",
+              "additionalProperties": false
+            }
+          }
+        },
+        "consignee_acknowledgement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "date",
+            "received_condition"
+          ],
+          "properties": {
+            "date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Not explicitly in old schema, but we store it for proof-of-receipt.",
+              "additionalProperties": false
+            },
+            "received_condition": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Describes goods condition upon receipt. Old schema does not have direct match.",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "x-oldDefinition": {
+        "additionalProperties": false,
+        "ShipperSignature": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ShipperSignature": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20,
+              "additionalProperties": false
+            }
+          }
+        },
+        "CarriersExecution": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "CarriersExecutionDate": {
+              "type": "string",
+              "format": "date-time",
+              "additionalProperties": false
+            },
+            "AirportOrPlace": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 17,
+              "additionalProperties": false
+            },
+            "Authorisation": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "Signature": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 20,
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

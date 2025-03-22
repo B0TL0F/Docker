@@ -1,0 +1,931 @@
+{
+  "type": "object",
+  "properties": {
+    "MAWBRequest": {
+      "type": "object",
+      "description": "Root element for the MAWBRequest",
+      "additionalProperties": false,
+      "properties": {
+        "Header": {
+          "type": "object",
+          "description": "Header information for MAWBRequest",
+          "additionalProperties": false,
+          "properties": {
+            "TimeStamp": {
+              "type": "string",
+              "description": "Date/time stamp"
+            },
+            "LoginId": {
+              "type": "string",
+              "description": "Login ID"
+            },
+            "OrgnizationId": {
+              "type": "integer",
+              "description": "Organization ID (integer)"
+            },
+            "OrganizationBranchCode": {
+              "type": "string",
+              "description": "Branch code"
+            },
+            "OrganizationName": {
+              "type": "string",
+              "description": "Organization name (optional)"
+            },
+            "RefernceDate": {
+              "type": "string",
+              "description": "Reference date/time"
+            },
+            "ReferenceID": {
+              "type": "string",
+              "description": "Reference ID"
+            },
+            "DocumentVersion": {
+              "type": "number",
+              "description": "Document version"
+            },
+            "SecretKey": {
+              "type": "string",
+              "description": "Secret key"
+            },
+            "ISUpliftBooking": {
+              "type": "boolean",
+              "description": "Indicates if booking is uplift"
+            },
+            "SendFWB": {
+              "type": "string",
+              "description": "Send FWB or not"
+            },
+            "SenderEmailId": {
+              "type": ["string", "null"],
+              "description": "Sender email (optional)"
+            }
+          },
+          "required": [
+            "TimeStamp",
+            "LoginId",
+            "OrgnizationId",
+            "OrganizationName",
+            "OrganizationBranchCode",
+            "RefernceDate",
+            "ReferenceID",
+            "DocumentVersion",
+            "SecretKey",
+            "ISUpliftBooking",
+            "SendFWB",
+            "SenderEmailId"
+          ]
+        },
+        "Details": {
+          "type": "object",
+          "description": "MAWB Details",
+          "additionalProperties": false,
+          "properties": {
+            "AirWayBillPrefix": {
+              "type": "integer",
+              "description": "AirWayBill prefix"
+            },
+            "AirWayBillNo": {
+              "type": "integer",
+              "description": "AirWayBill number"
+            },
+            "ExecutionAtCity": {
+              "type": "string",
+              "description": "Execution city"
+            },
+            "ExecutedonDate": {
+              "type": "string",
+              "description": "Execution date/time"
+            },
+            "Shipper": {
+              "type": "object",
+              "description": "Shipper details",
+              "additionalProperties": false,
+              "properties": {
+                "ShipperName": {
+                  "type": "string"
+                },
+                "AccountNumber": {
+                  "type": ["string", "null"]
+                },
+                "AddressLine1": {
+                  "type": "string"
+                },
+                "AddressLine2": {
+                  "type": ["string", "null"]
+                },
+                "Block": {
+                  "type": ["string", "null"]
+                },
+                "Area": {
+                  "type": ["string", "null"]
+                },
+                "CityCode": {
+                  "type": "string"
+                },
+                "OtherCityName": {
+                  "type": ["string", "null"]
+                },
+                "CountryCode": {
+                  "type": "string"
+                },
+                "PinCode": {
+                  "type": "string"
+                },
+                "TelPhone": {
+                  "type": ["string", "null"]
+                },
+                "Fax": {
+                  "type": ["string", "null"]
+                }
+              },
+              "required": [
+                "ShipperName",
+                "AccountNumber",
+                "AddressLine1",
+                "AddressLine2",
+                "Block",
+                "Area",
+                "CityCode",
+                "OtherCityName",
+                "CountryCode",
+                "PinCode",
+                "TelPhone",
+                "Fax"
+              ]
+            },
+            "Consignee": {
+              "type": "object",
+              "description": "Consignee details",
+              "additionalProperties": false,
+              "properties": {
+                "ConsigneeName": {
+                  "type": "string"
+                },
+                "AccountNumber": {
+                  "type": ["string", "null"]
+                },
+                "AddressLine1": {
+                  "type": "string"
+                },
+                "AddressLine2": {
+                  "type": ["string", "null"]
+                },
+                "Block": {
+                  "type": ["string", "null"]
+                },
+                "Area": {
+                  "type": ["string", "null"]
+                },
+                "CityCode": {
+                  "type": "string"
+                },
+                "OtherCityName": {
+                  "type": ["string", "null"]
+                },
+                "CountryCode": {
+                  "type": "string"
+                },
+                "PinCode": {
+                  "type": "string"
+                },
+                "TelPhone": {
+                  "type": ["number", "null"]
+                },
+                "Fax": {
+                  "type": ["number", "null"]
+                }
+              },
+              "required": [
+                "ConsigneeName",
+                "AccountNumber",
+                "AddressLine1",
+                "AddressLine2",
+                "Block",
+                "Area",
+                "CityCode",
+                "OtherCityName",
+                "CountryCode",
+                "PinCode",
+                "TelPhone",
+                "Fax"
+              ]
+            },
+            "Agent": {
+              "type": "object",
+              "description": "Agent details",
+              "additionalProperties": false,
+              "properties": {
+                "AgentName": {
+                  "type": "string"
+                },
+                "AccountNumber": {
+                  "type": ["string","null"]
+                },
+                "IATAAgentCode": {
+                  "type": "number"
+                },
+                "CASSAddressCode": {
+                  "type": ["string","null"]
+                },
+                "ParticipantID": {
+                  "type": ["string","null"]
+                },
+                "Place": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "AgentName",
+                "AccountNumber",
+                "IATAAgentCode",
+                "CASSAddressCode",
+                "ParticipantID",
+                "Place"
+              ]
+            },
+            "NotifyAgent": {
+              "type": "object",
+              "description": "Notify agent details (optional)",
+              "additionalProperties": false,
+              "properties": {
+                "NotifyPartyName": {
+                  "type": "string"
+                },
+                "TelPhone": {
+                  "type": ["number", "null"]
+                },
+                "Fax": {
+                  "type": ["number", "null"]
+                },
+                "AddressLine1": {
+                  "type": "string"
+                },
+                "AddressLine2": {
+                  "type": ["string", "null"]
+                },
+                "Block": {
+                  "type": ["string", "null"]
+                },
+                "Area": {
+                  "type": ["string", "null"]
+                },
+                "CityCode": {
+                  "type": "string"
+                },
+                "OtherCityName": {
+                  "type": ["string", "null"]
+                },
+                "CountryCode": {
+                  "type": "string"
+                },
+                "PinCode": {
+                  "type": ["string", "null"]
+                }
+              },
+              "required": [
+                "NotifyPartyName",
+                "TelPhone",
+                "Fax",
+                "AddressLine1",
+                "AddressLine2",
+                "Block",
+                "Area",
+                "CityCode",
+                "OtherCityName",
+                "CountryCode",
+                "PinCode"
+              ]
+            },
+            "Route": {
+              "type": "object",
+              "description": "Route details",
+              "additionalProperties": false,
+              "properties": {
+                "OriginAirportCode": {
+                  "type": "string"
+                },
+                "DestinationAirportCode": {
+                  "type": "string"
+                },
+                "RoutingDetails": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "description": "Routing details object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "CarrierCode": {
+                        "type": "string"
+                      },
+                      "FlightNumber": {
+                        "type": "string"
+                      },
+                      "FlightDepartureDate": {
+                        "type": "string"
+                      },
+                      "SourceAirportCode": {
+                        "type": "string"
+                      },
+                      "DestinationAirportCode": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "CarrierCode",
+                      "FlightNumber",
+                      "FlightDepartureDate",
+                      "SourceAirportCode",
+                      "DestinationAirportCode"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "OriginAirportCode",
+                "DestinationAirportCode",
+                "RoutingDetails"
+              ]
+            },
+            "ChargeCode": {
+              "type": "string"
+            },
+            "RateasAgreed": {
+              "type": "boolean"
+            },
+            "IsConsolCargo": {
+              "type": "boolean"
+            },
+            "AWBCurrencyCode": {
+              "type": "string"
+            },
+            "AccountingInfoDeclaration": {
+              "type": "object",
+              "description": "Accounting info (optional)",
+              "additionalProperties": false,
+              "properties": {
+                "DeclaredCarriageValue": {
+                  "type": ["number","null"]
+                },
+                "DeclaredCustomsValue": {
+                  "type": ["number","null"]
+                },
+                "DeclaredInsuranceValue": {
+                  "type": ["number","null"]
+                },
+                "AccountingDetails": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "AWBAccountInfo": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "AccountInfoIdentifier": {
+                            "type": ["string","null"]
+                          },
+                          "AccountNumber": {
+                            "type": ["string","null"]
+                          }
+                        },
+                        "required": ["AccountInfoIdentifier","AccountNumber"]
+                      }
+                    }
+                  },
+                  "required": ["AWBAccountInfo"]
+                }
+              },
+              "required": ["DeclaredCarriageValue","DeclaredCustomsValue","DeclaredInsuranceValue","AccountingDetails"]
+            },
+            "CargoDetails": {
+              "type": "object",
+              "description": "Cargo details",
+              "additionalProperties": false,
+              "properties": {
+                "CargoDetailsList": {
+                  "type": "array",
+                  "description": "Array of cargo details",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "PackageDetails": {
+                        "type": "array",
+                        "description": "Package details, unbounded",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "Dimension": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "Length": {
+                                  "type": "number"
+                                },
+                                "Width": {
+                                  "type": "number"
+                                },
+                                "Height": {
+                                  "type": "number"
+                                },
+                                "Unit": {
+                                  "type": "string"
+                                },
+                                "SLAC": {
+                                  "type": ["integer","null"]
+                                }
+                              },
+                              "required": [
+                                "Length",
+                                "Width",
+                                "Height",
+                                "Unit",
+                                "SLAC"
+                              ]
+                            },
+                            "NumberOfPieces": {
+                              "type": "number"
+                            },
+                            "GrossWeight": {
+                              "type": "number"
+                            },
+                            "GrossWeightUnit": {
+                              "type": "string"
+                            },
+                            "ChargeableWeight": {
+                              "type": "number"
+                            },
+                            "ChargeableWeightUnit": {
+                              "type": "string"
+                            },
+                            "VolumetricWeight": {
+                              "type": "number"
+                            },
+                            "VolumetricWeightUnit": {
+                              "type": "string"
+                            },
+                            "PackageVolume": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "Dimension",
+                            "NumberOfPieces",
+                            "GrossWeight",
+                            "GrossWeightUnit",
+                            "ChargeableWeight",
+                            "ChargeableWeightUnit",
+                            "VolumetricWeight",
+                            "VolumetricWeightUnit",
+                            "PackageVolume"
+                          ]
+                        }
+                      },
+                      "TotalNumberOfPieces": {
+                        "type": "number"
+                      },
+                      "TotalGrossWeight": {
+                        "type": "number"
+                      },
+                      "TotalGrossWeightUnit": {
+                        "type": "string"
+                      },
+                      "TotalChargeableWeight": {
+                        "type": "number"
+                      },
+                      "TotalChargeableWeightUnit": {
+                        "type": ["string","null"]
+                      },
+                      "TotalVolumetricWeight": {
+                        "type": "number"
+                      },
+                      "TotalVolumetricWeightUnit": {
+                        "type": "string"
+                      },
+                      "TotalCargoVolume": {
+                        "type": "number"
+                      },
+                      "CommodityItemNumber": {
+                        "type": "number"
+                      },
+                      "RateClassCode": {
+                        "type": "string"
+                      },
+                      "RateCharge": {
+                        "type": "number"
+                      },
+                      "GoodsDescription": {
+                        "type": "string"
+                      },
+                      "SLAC": {
+                        "type": ["integer","null"]
+                      },
+                      "HSCodes": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "description": "Optional HS codes",
+                        "properties": {
+                          "HSCode": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": ["HSCode"]
+                      },
+                      "ULD_Details": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "description": "Optional ULD details",
+                        "properties": {
+                          "ULD_Type": {
+                            "type": "string"
+                          },
+                          "ULD_Serial_Number": {
+                            "type": "string"
+                          },
+                          "ULD_Owner_Code": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "ULD_Type",
+                          "ULD_Serial_Number",
+                          "ULD_Owner_Code"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "PackageDetails",
+                      "TotalNumberOfPieces",
+                      "TotalGrossWeight",
+                      "TotalGrossWeightUnit",
+                      "TotalChargeableWeight",
+                      "TotalChargeableWeightUnit",
+                      "TotalVolumetricWeight",
+                      "TotalVolumetricWeightUnit",
+                      "TotalCargoVolume",
+                      "CommodityItemNumber",
+                      "RateClassCode",
+                      "RateCharge",
+                      "GoodsDescription",
+                      "SLAC",
+                      "HSCodes",
+                      "ULD_Details"
+                    ]
+                  }
+                }
+              },
+              "required": ["CargoDetailsList"]
+            },
+            "ChargesDetails": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Optional charges info",
+              "properties": {
+                "CollectChargeDueAgentAmount": {
+                  "type": "number"
+                },
+                "CollectChargeDueCarrierAmount": {
+                  "type": "number"
+                },
+                "CollectChargeSummaryTotal": {
+                  "type": "number"
+                },
+                "CollectTaxesChargeAmount": {
+                  "type": "number"
+                },
+                "CollectValuationChargeAmount": {
+                  "type": "number"
+                },
+                "CollectWeightChargeAmount": {
+                  "type": "number"
+                },
+                "OtherCollectCharges": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "AWBOtherCharges": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "ChargeAmount": {
+                            "type": "number"
+                          },
+                          "ChargeCode": {
+                            "type": "string"
+                          },
+                          "EntitlementCode": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["ChargeAmount", "ChargeCode", "EntitlementCode"]
+                      }
+                    }
+                  },
+                  "required": ["AWBOtherCharges"]
+                },
+                "OtherPrepaidCharges": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "AWBOtherCharges": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "ChargeAmount": {
+                            "type": "number"
+                          },
+                          "ChargeCode": {
+                            "type": "string"
+                          },
+                          "EntitlementCode": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["ChargeAmount", "ChargeCode", "EntitlementCode"]
+                      }
+                    }
+                  },
+                  "required": ["AWBOtherCharges"]
+                },
+                "PrepaidChargeDueAgentAmount": {
+                  "type": "number"
+                },
+                "PrepaidChargeDueCarrierAmount": {
+                  "type": "number"
+                },
+                "PrepaidChargeSummaryTotal": {
+                  "type": "number"
+                },
+                "PrepaidTaxesChargeAmount": {
+                  "type": "number"
+                },
+                "PrepaidValuationChargeAmount": {
+                  "type": "number"
+                },
+                "PrepaidWeightChargeAmount": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "CollectChargeDueAgentAmount",
+                "CollectChargeDueCarrierAmount",
+                "CollectChargeSummaryTotal",
+                "CollectTaxesChargeAmount",
+                "CollectValuationChargeAmount",
+                "CollectWeightChargeAmount",
+                "OtherCollectCharges",
+                "OtherPrepaidCharges",
+                "PrepaidChargeDueAgentAmount",
+                "PrepaidChargeDueCarrierAmount",
+                "PrepaidChargeSummaryTotal",
+                "PrepaidTaxesChargeAmount",
+                "PrepaidValuationChargeAmount",
+                "PrepaidWeightChargeAmount"
+              ]
+            },
+            "DestinationCharges": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Optional destination charges",
+              "properties": {
+                "DestinationCurrencyCode": {
+                  "type": ["string","null"]
+                },
+                "ExchangeRate": {
+                  "type": ["number","null"]
+                },
+                "ChargesAtDestination": {
+                  "type": ["number","null"]
+                },
+                "ChargeAmount": {
+                  "type": ["number","null"]
+                },
+                "TotalCollectCharges": {
+                  "type": ["number","null"]
+                }
+              },
+              "required": ["DestinationCurrencyCode","ExchangeRate","ChargesAtDestination","ChargeAmount","TotalCollectCharges"]
+            },
+            "ShipmentReferenceInfo": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Optional shipment reference info",
+              "properties": {
+                "ShipmentReferenceNumber": {
+                  "type": ["number","null"]
+                },
+                "SupplementaryInfo": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "HandlingInfo": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "SpecialServiceRequests": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "SpecialServiceRequest": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": ["SpecialServiceRequest"]
+                    },
+                    "OtherServiceInformation": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "OtherServiceInfo": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": ["OtherServiceInfo"]
+                    },
+                    "SpecialHandlingCodes": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "SpecialHandlingCode": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": ["SpecialHandlingCode"]
+                    }
+                  },
+                "required": ["SpecialServiceRequests","OtherServiceInformation","SpecialHandlingCodes"]
+                }
+              },
+              "required": ["ShipmentReferenceNumber","SupplementaryInfo","HandlingInfo"]
+            },
+            "OtherInfo": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Other relevant info",
+              "properties": {
+                "CustomOriginCode": {
+                  "type": "string"
+                },
+                "AgentFileReference": {
+                  "type": ["string","null"]
+                },
+                "CommissionAmount": {
+                  "type": ["number","null"]
+                },
+                "CommissionPercentage": {
+                  "type": ["number","null"]
+                },
+                "IncentiveChargedAmount": {
+                  "type": ["number","null"]
+                },
+                "IsCommissionInfoAvailable": {
+                  "type": ["string","null"]
+                },
+                "IsNegativeSalesIncentive": {
+                  "type": ["string","null"]
+                }
+              },
+              "required": ["CustomOriginCode","AgentFileReference","CommissionAmount","CommissionPercentage","IncentiveChargedAmount","IsCommissionInfoAvailable","IsNegativeSalesIncentive"]
+            },
+            "ShipperSignature": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Shipper signature (optional)",
+              "properties": {
+                "ShipperSignature": {
+                  "type": ["string","null"]
+                }
+              },
+              "required": ["ShipperSignature"]
+            },
+            "CarriersExecution": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Carrier's execution details (optional)",
+              "properties": {
+                "CarriersExecutionDate": {
+                  "type": "string"
+                },
+                "AirportOrPlace": {
+                  "type": "string"
+                },
+                "Authorisation": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "Signature": {
+                      "type": ["string","null"]
+                    }
+                  },
+                "required": ["Signature"]
+                }
+              },
+              "required": ["CarriersExecutionDate", "AirportOrPlace","Authorisation"]
+            },
+            "Miscellaneous": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Optional miscellaneous data",
+              "properties": {
+                "Miscellaneous1": {
+                  "type": ["string","null"]
+                },
+                "Miscellaneous2": {
+                  "type": ["string","null"]
+                },
+                "Miscellaneous3": {
+                  "type": ["string","null"]
+                },
+                "Miscellaneous4": {
+                  "type": ["string","null"]
+                },
+                "Miscellaneous5": {
+                  "type": ["string","null"]
+                }
+              },
+              "required": ["Miscellaneous1", "Miscellaneous2","Miscellaneous3","Miscellaneous4","Miscellaneous5"]
+            },
+            "Other_Customs_Information": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Optional additional customs data",
+              "properties": {
+                "Info_Group": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "ISO_Country_Code": {
+                        "type": ["string","null"]
+                      },
+                      "Information_Identifier": {
+                        "type": ["string","null"]
+                      },
+                      "Custom_Information_Identifier": {
+                        "type": ["string","null"]
+                      },
+                      "Supplementary_Custom_Information": {
+                        "type": ["string","null"]
+                      }
+                    },
+                    "required": ["ISO_Country_Code","Information_Identifier","Custom_Information_Identifier","Supplementary_Custom_Information"]
+                  }
+                }
+              },
+              "required": ["Info_Group"]
+            }
+          },
+          "required": [
+            "AirWayBillPrefix",
+            "AirWayBillNo",
+            "ExecutionAtCity",
+            "ExecutedonDate",
+            "Shipper",
+            "Consignee",
+            "Agent",
+            "NotifyAgent",
+            "Route",
+            "ChargeCode",
+            "RateasAgreed",
+            "IsConsolCargo",
+            "AWBCurrencyCode",
+            "AccountingInfoDeclaration",
+            "CargoDetails",
+            "ChargesDetails",
+            "DestinationCharges",
+            "ShipmentReferenceInfo",
+            "OtherInfo",
+            "ShipperSignature",
+            "CarriersExecution",
+            "Miscellaneous",
+            "Other_Customs_Information"
+          ]
+        }
+      },
+      "required": ["Header", "Details"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["MAWBRequest"]
+}

@@ -1,0 +1,1044 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/MAWBRequest.schema.json",
+  "title": "MAWBRequest Schema",
+  "type": "object",
+  "properties": {
+    "MAWBRequest": {
+      "type": "object",
+      "description": "Root element for the MAWBRequest",
+      "properties": {
+        "Details": {
+          "type": "object",
+          "description": "MAWB Details",
+          "properties": {
+            "AirWayBillPrefix": {
+              "type": "integer",
+              "description": "AirWayBill prefix",
+              "minimum": 0,
+              "maximum": 999
+            },
+            "AirWayBillNo": {
+              "type": "integer",
+              "description": "AirWayBill number",
+              "minimum": 0,
+              "maximum": 99999999
+            },
+            "ExecutionAtCity": {
+              "type": "string",
+              "description": "Execution city",
+              "minLength": 1,
+              "maxLength": 3
+            },
+            "ExecutedonDate": {
+              "type": "string",
+              "description": "Execution date/time",
+              "format": "date-time"
+            },
+            "Shipper": {
+              "type": "object",
+              "description": "Shipper details",
+              "properties": {
+                "ShipperName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 70
+                },
+                "AccountNumber": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 14
+                },
+                "AddressLine1": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "AddressLine2": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "Block": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "Area": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "CityCode": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 3
+                },
+                "OtherCityName": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 50
+                },
+                "CountryCode": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 2
+                },
+                "PinCode": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 9
+                },
+                "TelPhone": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999999999999999999
+                },
+                "Fax": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999999999999999999
+                }
+              },
+              "required": [
+                "ShipperName",
+                "AddressLine1",
+                "CityCode",
+                "CountryCode",
+                "PinCode"
+              ]
+            },
+            "Consignee": {
+              "type": "object",
+              "description": "Consignee details",
+              "properties": {
+                "ConsigneeName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 70
+                },
+                "AccountNumber": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 14
+                },
+                "AddressLine1": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "AddressLine2": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "Block": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "Area": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "CityCode": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 3
+                },
+                "OtherCityName": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 50
+                },
+                "CountryCode": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 2
+                },
+                "PinCode": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 9
+                },
+                "TelPhone": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999999999999999999
+                },
+                "Fax": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999999999999999999
+                }
+              },
+              "required": [
+                "ConsigneeName",
+                "AddressLine1",
+                "CityCode",
+                "CountryCode",
+                "PinCode"
+              ]
+            },
+            "Agent": {
+              "type": "object",
+              "description": "Agent details",
+              "properties": {
+                "AgentName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "AccountNumber": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 14
+                },
+                "IATAAgentCode": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999
+                },
+                "CASSAddressCode": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4
+                },
+                "ParticipantID": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4
+                },
+                "Place": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 17
+                }
+              },
+              "required": [
+                "AgentName",
+                "IATAAgentCode",
+                "Place"
+              ]
+            },
+            "NotifyAgent": {
+              "type": "object",
+              "description": "Notify agent details (optional)",
+              "properties": {
+                "NotifyPartyName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 70
+                },
+                "TelPhone": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 99999999999999999999
+                },
+                "Fax": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 99999999999999999999
+                },
+                "AddressLine1": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "AddressLine2": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "Block": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "Area": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 35
+                },
+                "CityCode": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 3
+                },
+                "OtherCityName": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 50
+                },
+                "CountryCode": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 2
+                },
+                "PinCode": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 9
+                }
+              },
+              "required": [
+                "NotifyPartyName",
+                "AddressLine1",
+                "CityCode",
+                "CountryCode"
+              ]
+            },
+            "Route": {
+              "type": "object",
+              "description": "Route details",
+              "properties": {
+                "OriginAirportCode": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 3
+                },
+                "DestinationAirportCode": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 3
+                },
+                "RoutingDetails": {
+                  "type": "array",
+                  "maxItems": 3,
+                  "items": {
+                    "type": "object",
+                    "description": "Routing details object",
+                    "properties": {
+                      "CarrierCode": {
+                        "type": "string",
+                        "minLength": 2,
+                        "maxLength": 2
+                      },
+                      "FlightNumber": {
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 5
+                      },
+                      "FlightDepartureDate": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "SourceAirportCode": {
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 3
+                      },
+                      "DestinationAirportCode": {
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 3
+                      }
+                    },
+                    "required": [
+                      "CarrierCode",
+                      "FlightNumber",
+                      "FlightDepartureDate",
+                      "SourceAirportCode",
+                      "DestinationAirportCode"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "OriginAirportCode",
+                "DestinationAirportCode"
+              ]
+            },
+            "ChargeCode": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2
+            },
+            "RateasAgreed": {
+              "type": "boolean"
+            },
+            "IsConsolCargo": {
+              "type": "boolean"
+            },
+            "AWBCurrencyCode": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3
+            },
+            "AccountingInfoDeclaration": {
+              "type": "object",
+              "description": "Accounting info (optional)",
+              "properties": {
+                "DeclaredCarriageValue": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "DeclaredCustomsValue": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "DeclaredInsuranceValue": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "AccountingDetails": {
+                  "type": "object",
+                  "properties": {
+                    "AWBAccountInfo": {
+                      "type": "array",
+                      "maxItems": 6,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "AccountInfoIdentifier": {
+                            "type": "string",
+                            "minLength": 3,
+                            "maxLength": 50
+                          },
+                          "AccountNumber": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 35
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "CargoDetails": {
+              "type": "object",
+              "description": "Cargo details",
+              "properties": {
+                "CargoDetailsList": {
+                  "type": "array",
+                  "description": "Array of cargo details",
+                  "maxItems": 12,
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "PackageDetails": {
+                        "type": "array",
+                        "description": "Package details, unbounded",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "Dimension": {
+                              "type": "object",
+                              "properties": {
+                                "Length": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 999999999
+                                },
+                                "Width": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 999999999
+                                },
+                                "Height": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 999999999
+                                },
+                                "Unit": {
+                                  "type": "string",
+                                  "minLength": 2,
+                                  "maxLength": 3
+                                },
+                                "SLAC": {
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "Length",
+                                "Width",
+                                "Height",
+                                "Unit"
+                              ]
+                            },
+                            "NumberOfPieces": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 9999999999
+                            },
+                            "GrossWeight": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 9999999999
+                            },
+                            "GrossWeightUnit": {
+                              "type": "string",
+                              "minLength": 0,
+                              "maxLength": 3
+                            },
+                            "ChargeableWeight": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 9999999999
+                            },
+                            "ChargeableWeightUnit": {
+                              "type": "string",
+                              "minLength": 0,
+                              "maxLength": 3
+                            },
+                            "VolumetricWeight": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 9999999999
+                            },
+                            "VolumetricWeightUnit": {
+                              "type": "string",
+                              "minLength": 0,
+                              "maxLength": 3
+                            },
+                            "PackageVolume": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 9999999999
+                            }
+                          },
+                          "required": [
+                            "Dimension",
+                            "NumberOfPieces",
+                            "GrossWeight",
+                            "GrossWeightUnit",
+                            "ChargeableWeight",
+                            "ChargeableWeightUnit",
+                            "VolumetricWeight",
+                            "VolumetricWeightUnit",
+                            "PackageVolume"
+                          ]
+                        }
+                      },
+                      "TotalNumberOfPieces": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 9999999999
+                      },
+                      "TotalGrossWeight": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "TotalGrossWeightUnit": {
+                        "type": "string",
+                        "minLength": 0,
+                        "maxLength": 3
+                      },
+                      "TotalChargeableWeight": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 9999999999
+                      },
+                      "TotalChargeableWeightUnit": {
+                        "type": "string",
+                        "minLength": 0,
+                        "maxLength": 3
+                      },
+                      "TotalVolumetricWeight": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 9999999999
+                      },
+                      "TotalVolumetricWeightUnit": {
+                        "type": "string",
+                        "minLength": 0,
+                        "maxLength": 3
+                      },
+                      "TotalCargoVolume": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 9999999999
+                      },
+                      "CommodityItemNumber": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 9999
+                      },
+                      "RateClassCode": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1
+                      },
+                      "RateCharge": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 9999999999
+                      },
+                      "GoodsDescription": {
+                        "type": "string",
+                        "minLength": 5,
+                        "maxLength": 100
+                      },
+                      "SLAC": {
+                        "type": "integer"
+                      },
+                      "HSCodes": {
+                        "type": "object",
+                        "description": "Optional HS codes",
+                        "properties": {
+                          "HSCode": {
+                            "type": "array",
+                            "maxItems": 10,
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "ULD_Details": {
+                        "type": "object",
+                        "description": "Optional ULD details",
+                        "properties": {
+                          "ULD_Type": {
+                            "type": "string",
+                            "minLength": 3,
+                            "maxLength": 3
+                          },
+                          "ULD_Serial_Number": {
+                            "type": "string",
+                            "minLength": 4,
+                            "maxLength": 5
+                          },
+                          "ULD_Owner_Code": {
+                            "type": "string",
+                            "minLength": 2,
+                            "maxLength": 2
+                          }
+                        },
+                        "required": [
+                          "ULD_Type",
+                          "ULD_Serial_Number",
+                          "ULD_Owner_Code"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "PackageDetails",
+                      "TotalNumberOfPieces",
+                      "TotalGrossWeight",
+                      "TotalGrossWeightUnit",
+                      "TotalChargeableWeight",
+                      "TotalVolumetricWeight",
+                      "TotalVolumetricWeightUnit",
+                      "TotalCargoVolume",
+                      "CommodityItemNumber",
+                      "RateClassCode",
+                      "RateCharge",
+                      "GoodsDescription"
+                    ]
+                  }
+                }
+              },
+              "required": ["CargoDetailsList"]
+            },
+            "ChargesDetails": {
+              "type": "object",
+              "description": "Optional charges info",
+              "properties": {
+                "CollectChargeDueAgentAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "CollectChargeDueCarrierAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "CollectChargeSummaryTotal": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "CollectTaxesChargeAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "CollectValuationChargeAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "CollectWeightChargeAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "OtherCollectCharges": {
+                  "type": "object",
+                  "properties": {
+                    "AWBOtherCharges": {
+                      "type": "array",
+                      "maxItems": 10,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ChargeAmount": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 9999999999
+                          },
+                          "ChargeCode": {
+                            "type": "string",
+                            "minLength": 2,
+                            "maxLength": 2
+                          },
+                          "EntitlementCode": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 1
+                          }
+                        },
+                        "required": ["ChargeAmount", "ChargeCode", "EntitlementCode"]
+                      }
+                    }
+                  }
+                },
+                "OtherPrepaidCharges": {
+                  "type": "object",
+                  "properties": {
+                    "AWBOtherCharges": {
+                      "type": "array",
+                      "maxItems": 10,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ChargeAmount": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 9999999999
+                          },
+                          "ChargeCode": {
+                            "type": "string",
+                            "minLength": 2,
+                            "maxLength": 2
+                          },
+                          "EntitlementCode": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 1
+                          }
+                        },
+                        "required": ["ChargeAmount", "ChargeCode", "EntitlementCode"]
+                      }
+                    }
+                  }
+                },
+                "PrepaidChargeDueAgentAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "PrepaidChargeDueCarrierAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "PrepaidChargeSummaryTotal": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "PrepaidTaxesChargeAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "PrepaidValuationChargeAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "PrepaidWeightChargeAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                }
+              },
+              "required": [
+                "CollectChargeDueAgentAmount",
+                "CollectChargeDueCarrierAmount",
+                "CollectChargeSummaryTotal",
+                "CollectTaxesChargeAmount",
+                "CollectValuationChargeAmount",
+                "CollectWeightChargeAmount",
+                "PrepaidChargeDueAgentAmount",
+                "PrepaidChargeDueCarrierAmount",
+                "PrepaidChargeSummaryTotal",
+                "PrepaidTaxesChargeAmount",
+                "PrepaidValuationChargeAmount",
+                "PrepaidWeightChargeAmount"
+              ]
+            },
+            "DestinationCharges": {
+              "type": "object",
+              "description": "Optional destination charges",
+              "properties": {
+                "DestinationCurrencyCode": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 3
+                },
+                "ExchangeRate": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "ChargesAtDestination": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "ChargeAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "TotalCollectCharges": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                }
+              }
+            },
+            "ShipmentReferenceInfo": {
+              "type": "object",
+              "description": "Optional shipment reference info",
+              "properties": {
+                "ShipmentReferenceNumber": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "SupplementaryInfo": {
+                  "type": "array",
+                  "maxItems": 2,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  }
+                },
+                "HandlingInfo": {
+                  "type": "object",
+                  "properties": {
+                    "SpecialServiceRequests": {
+                      "type": "object",
+                      "properties": {
+                        "SpecialServiceRequest": {
+                          "type": "array",
+                          "maxItems": 3,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 100
+                          }
+                        }
+                      }
+                    },
+                    "OtherServiceInformation": {
+                      "type": "object",
+                      "properties": {
+                        "OtherServiceInfo": {
+                          "type": "array",
+                          "maxItems": 3,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 100
+                          }
+                        }
+                      }
+                    },
+                    "SpecialHandlingCodes": {
+                      "type": "object",
+                      "properties": {
+                        "SpecialHandlingCode": {
+                          "type": "array",
+                          "maxItems": 9,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 100
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "OtherInfo": {
+              "type": "object",
+              "description": "Other relevant info",
+              "properties": {
+                "CustomOriginCode": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 3
+                },
+                "AgentFileReference": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 100
+                },
+                "CommissionAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "CommissionPercentage": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 9999999999
+                },
+                "IncentiveChargedAmount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 999999999
+                },
+                "IsCommissionInfoAvailable": {
+                  "type": "string",
+                  "minLength": 4,
+                  "maxLength": 10
+                },
+                "IsNegativeSalesIncentive": {
+                  "type": "string",
+                  "minLength": 4,
+                  "maxLength": 10
+                }
+              },
+              "required": ["CustomOriginCode"]
+            },
+            "ShipperSignature": {
+              "type": "object",
+              "description": "Shipper signature (optional)",
+              "properties": {
+                "ShipperSignature": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 20
+                }
+              }
+            },
+            "CarriersExecution": {
+              "type": "object",
+              "description": "Carrier's execution details (optional)",
+              "properties": {
+                "CarriersExecutionDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "AirportOrPlace": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 17
+                },
+                "Authorisation": {
+                  "type": "object",
+                  "properties": {
+                    "Signature": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 20
+                    }
+                  }
+                }
+              },
+              "required": ["CarriersExecutionDate", "AirportOrPlace"]
+            },
+            "Miscellaneous": {
+              "type": "object",
+              "description": "Optional miscellaneous data",
+              "properties": {
+                "Miscellaneous1": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "Miscellaneous2": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "Miscellaneous3": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "Miscellaneous4": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "Miscellaneous5": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                }
+              }
+            },
+            "Other_Customs_Information": {
+              "type": "object",
+              "description": "Optional additional customs data",
+              "properties": {
+                "Info_Group": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ISO_Country_Code": {
+                        "type": "string",
+                        "minLength": 0,
+                        "maxLength": 2
+                      },
+                      "Information_Identifier": {
+                        "type": "string",
+                        "minLength": 0,
+                        "maxLength": 3
+                      },
+                      "Custom_Information_Identifier": {
+                        "type": "string",
+                        "minLength": 0,
+                        "maxLength": 2
+                      },
+                      "Supplementary_Custom_Information": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 35
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "AirWayBillPrefix",
+            "AirWayBillNo",
+            "ExecutionAtCity",
+            "ExecutedonDate",
+            "Shipper",
+            "Consignee",
+            "Agent",
+            "Route",
+            "ChargeCode",
+            "RateasAgreed",
+            "IsConsolCargo",
+            "AWBCurrencyCode",
+            "CargoDetails"
+          ]
+        }
+      },
+      "required": ["Details"]
+    }
+  },
+  "required": ["MAWBRequest"]
+}

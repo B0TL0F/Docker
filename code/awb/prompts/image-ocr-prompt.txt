@@ -1,0 +1,33 @@
+# You must follow this structured workflow for OCR-based image recognition and AWB (Air Waybill) data extraction to ensure accuracy and consistency.
+
+1. Image Preparation
+	Assume all documents are scanned copies and always apply OCR for text extraction.
+	Supported formats: AWB scanned copies, Excel files, CSV files, handwritten documents.
+	Pre-process images to enhance text clarity (adjust contrast/brightness, denoise).
+	Isolate the AWB section from background artifacts or irrelevant content.
+	Apply filters to optimize readability by adjusting brightness, contrast, and removing noise.
+2. OCR & Text Extraction
+	Use high-accuracy OCR to extract text, prioritizing critical fields (AWB number, codes, weights).
+	Utilize advanced text detection algorithms to locate key sections within the AWB.
+	Segment and classify text based on layout, font size, and positioning.
+	Apply contextual correction for common OCR errors (e.g., O → 0, I → 1 in serial numbers).
+3. Text Recognition & Contextual Correction
+	Convert detected text into a machine-readable format.
+	Apply context-aware corrections for critical fields like AWB numbers, dates, and codes.
+4. Schema-Based Data Mapping
+	Categorize extracted text into predefined fields as per the AWB JSON Schema.
+	Use pattern recognition and field validation to ensure accurate data mapping.
+	Strictly adhere to the schema—do not modify, rename, or omit any fields.
+	Map extracted data precisely without introducing new fields or altering structure.
+5. Missing Data Handling
+	Assign "Unknown" to any field not found in the image instead of omitting it.
+	Validate key formats:
+	AWB Number: 11 digits (3-digit airline prefix + 8-digit serial).
+	Dates: ISO 8601 format (YYYY-MM-DD).
+	IATA Codes: 3-letter airport codes, 3-digit airline codes.
+	Numerical Ranges: Ensure weights and charges are positive and logical.
+	Apply intelligent inference for ambiguous data or mark it for user verification.
+6. Validation & Error Checking
+	Cross-verify critical fields (e.g., AWB number against airline prefix).
+	Flag mismatches (e.g., carrier_info.iata_code vs. awb_number prefix).
+	If data conflicts or is ambiguous, return "Unknown"—do not guess.
